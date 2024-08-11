@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover a variety of free ebooks and immerse yourself in new worlds.">
+    <meta name="keywords" content="ebooks, free ebooks, download ebooks, book collection">
+    <meta name="author" content="TheCoditz">
+    <title>E-books World</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1>Explore Ebooks</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Ebooks</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search ebooks...">
+            <ul id="searchResults" class="search-results"></ul>
+        </div>
+    </nav>
+    <header class="hero">
+        <h2>Welcome to the World of Free Ebooks</h2>
+        <p>Discover a variety of free ebooks and immerse yourself in new worlds.</p>
+    </header>
+    <main>
+        <section class="free-ebooks">
+            <h3>Explore Our Free Ebooks</h3>
+            <div class="ebook-grid">
+                <div class="ebook-item">
+                    <img src="https://drive.google.com/thumbnail?id=1t99c-iE8VickgFvTKtgRxGcgW_VV8aHB" alt="The Emperor of All Maladies">
+                    <a href="https://drive.google.com/uc?export=download&id=1t99c-iE8VickgFvTKtgRxGcgW_VV8aHB" download>Download</a>
+                </div>
+                <div class="ebook-item">
+                    <img src="https://drive.google.com/thumbnail?id=1R36818oyjjCkqiNAu9XA2vTxRpku88hL" alt="Tantric Visions of the Divine Feminine">
+                    <a href="https://drive.google.com/uc?export=download&id=1R36818oyjjCkqiNAu9XA2vTxRpku88hL" download>Download</a>
+                </div>
+                <div class="ebook-item">
+                    <img src="https://drive.google.com/thumbnail?id=1OTZfpNILxIGDdacCuHEBG_T75r8IDc69" alt="Hands-On Machine Learning with Scikit-Learn and TensorFlow">
+                    <a href="https://drive.google.com/uc?export=download&id=1OTZfpNILxIGDdacCuHEBG_T75r8IDc69" download>Download</a>
+                </div>
+                <div class="ebook-item">
+                    <img src="https://drive.google.com/thumbnail?id=1JoYUXB8hs6UiFtcnC-M6MdfoMYrIamiy" alt="NumPy Beginner's Guide, 2nd Edition">
+                    <a href="https://drive.google.com/uc?export=download&id=1JoYUXB8hs6UiFtcnC-M6MdfoMYrIamiy" download>Download</a>
+                </div>
+            </div>
+        </section>
+        <section id="login" class="content">
+            <h3>Login</h3>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Submit</button>
+            </form>
+            <div class="social-login">
+                <button class="social-button" id="google-login">Login with Google</button>
+                <button class="social-button" id="apple-login">Login with Apple</button>
+                <button class="social-button" id="twitter-login">Login with Twitter</button>
+                <button class="social-button" id="facebook-login">Login with Facebook</button>
+                <button class="social-button" id="instagram-login">Login with Instagram</button>
+            </div>
+        </section>
+    </main>
+    <div class="nav-container">
+        <a href="#" class="login-option"></a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
