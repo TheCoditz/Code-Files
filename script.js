@@ -1,58 +1,55 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search');
-    const searchResults = document.getElementById('searchResults');
-
-    const books = [
-        { title: 'The Emperor of All Maladies', link: 'https://drive.google.com/uc?export=download&id=1t99c-iE8VickgFvTKtgRxGcgW_VV8aHB' },
-        { title: 'Tantric Visions of the Divine Feminine', link: 'https://drive.google.com/uc?export=download&id=1R36818oyjjCkqiNAu9XA2vTxRpku88hL' },
-        { title: 'Hands-On Machine Learning with Scikit-Learn and TensorFlow', link: 'https://drive.google.com/uc?export=download&id=1OTZfpNILxIGDdacCuHEBG_T75r8IDc69' },
-        { title: 'NumPy Beginner\'s Guide, 2nd Edition', link: 'https://drive.google.com/uc?export=download&id=1JoYUXB8hs6UiFtcnC-M6MdfoMYrIamiy' }
-    ];
-
-    searchInput.addEventListener('input', function() {
-        const query = this.value.toLowerCase();
-        searchResults.innerHTML = '';
-
-        if (query) {
-            const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query));
-            if (filteredBooks.length > 0) {
-                filteredBooks.forEach(book => {
-                    const li = document.createElement('li');
-                    li.textContent = book.title;
-                    li.addEventListener('click', () => {
-                        window.location.href = `book.html?title=${encodeURIComponent(book.title)}`;
-                    });
-                    searchResults.appendChild(li);
-                });
-            } else {
-                const noResults = document.createElement('li');
-                noResults.classList.add('no-results');
-                noResults.textContent = 'No book in database';
-                searchResults.appendChild(noResults);
-            }
-            searchResults.style.display = 'block';
-        } else {
-            searchResults.style.display = 'none';
-        }
-    });
-
-    // JavaScript to show/hide footer on scroll
-    document.addEventListener('scroll', function() {
-        const footer = document.querySelector('.footer');
-        const scrollPosition = window.scrollY + window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-
-        if (scrollPosition > documentHeight - 100) { // Adjust the threshold as needed
-            footer.classList.add('visible');
-        } else {
-            footer.classList.remove('visible');
-        }
-    });
-});
-
-// Hide search results when clicking outside
-document.addEventListener('click', function(e) {
-    if (!document.getElementById('search').contains(e.target) && !document.getElementById('searchResults').contains(e.target)) {
-        document.getElementById('searchResults').style.display = 'none';
-    }
-});
+// let div=document.querySelector("div")
+// console.log(div)
+// let id=div.getAttribute("id");
+// console.log(id);
+// let name1=div.getAttribute("name");
+// console.log(name1)
+// let para=document.querySelector("p");
+// console.log(para.setAttribute("class","newpara"))
+// let div1=document.querySelector("div");
+// console.log(div1.style)
+// div.style.backgroundColor="maroon"
+// div.innerText="hello"
+// let newbtn = document.createElement("button");
+// console.log(newbtn)
+// newbtn.innerText="Click Me"
+// let div2=document.querySelector("div");
+// div.after(newbtn);
+// let newhead=document.createElement("h1");
+// newhead.innerText="<i>I am Heading</i>";
+// document.querySelector("body").prepend(newhead)
+// let btn=document.createElement("button");
+// btn.innerText="Click Me";
+// console.log(btn);
+// btn.style.backgroundColor="red";
+// btn.style.color="black";
+// document.querySelector("body").prepend(btn);
+// let para=document.querySelector("p");
+// let new_para=para.classList.add("para2");
+// console.log(new_para);
+// let btn1=document.querySelector("#btn1");
+// btn1.onclick=()=>{
+//     console.log("Button is destroyed");
+//     alert("You fucking destroyed me");
+// }
+// let div=document.querySelector(".box");
+// div.onmouseover=()=>{
+//     console.log("You enetered into box");
+    
+// }
+// btn1.addEventListener("click",()=>{
+//     console.log("Button Clicked")
+// })
+// let btn=document.querySelector("button");
+// let color="light"
+// btn.addEventListener("click",()=>{
+//     if(color==="light"){
+//         color="black";
+//         document.querySelector("body").style.backgroundColor="black"
+//     }
+//     else{
+//         color="light"
+//         document.querySelector("body").style.backgroundColor="white"
+//     }
+//     console.log(color)
+// })
