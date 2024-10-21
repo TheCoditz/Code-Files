@@ -1,73 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
-    <style>
-        body{
-            background-color: whitesmoke;
-        }
-        .box{
-            background-color: #bcb9b9;
-            position: absolute;
-            height: 65vh;
-            width: 45vh;
-            margin-top: 17vh;
-            margin-left: 40vw;
-            border-radius: px;
-        }
-        .box2{
-            position: relative;
-            border: 3px solid rgba(236, 234, 234, 0.507);
-            border-radius: 5px;
-            background-color: white;
-            margin-top: 15px;
-            margin-right: 10px;
-            margin-left: 10px;
-            height: 60vh;
-            box-shadow: 5px 5px 5px ;
-        }
-        img{
-            margin-top: 2px;
-            margin-left:2px;
-            width: 41vh;
-            border-radius: 5px;
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  Button,
+  TextInput,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
+// import {NavigationContainer} from '@react-navigation/native';
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+// import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+// import {createStackNavigator} from '@react-navigation/stack';
+// const Tab = createBottomTabNavigator();
+// const Tab_Navigation = () => {
+//   return (
+//     <NavigationContainer>
+//       <SafeAreaView style={{flex: 1}}>
+//         <Tab.Navigator>
+//           <Tab.Screen name="Login" component={Login_2} />
+//           <Tab.Screen name="SignUp" component={Sign_Up} />
+//         </Tab.Navigator>
+//       </SafeAreaView>
+//     </NavigationContainer>
+//   );
+// };
+// const Login_2 = () => {
+//   return (
+//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Text style={{fontSize: 40, color: 'red'}}>Login</Text>
+//     </View>
+//   );
+// };
+// const Sign_Up = () => {
+//   return (
+//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Text style={{fontSize: 40, color: 'red'}}>Sign Up</Text>
+//     </View>
+//   );
+// };
 
-        }
-    .box h2{
-            text-decoration: underline;
-            margin-left: 15px;
-            font-family: cursive;
-            margin-top: 3px;
-            text-shadow: 5px 5px 5px rgb(175, 41, 41);
-        }
-        .box2>p{
-            margin-top: -12px;
-            margin-left: 5px;
-            font-family: cursive;
-            font-weight: bold;
-            text-shadow: 5px 5px 5px violet;
-        }
-        .box3{
-            padding-left: 30px;
-            margin-left: 85px;
-            width: 100px;
-            border-radius: 20px;
-            background-color: rgb(142, 142, 208) ;
-        }
-        
-    </style>
-</head>
-<body>
-    <div class="box">
-        <div class="box2">
-            <img src="project.jpg" alt="">
-            <h2>Explore Beautiful Lakes</h2>
-            <p>Explore the wonderful beauty of lake and nature and deep dive into mesmerising experience that you have never experienced before. Above image is of Baikal Lake. It is India's largest and deepest lake. Explore the wonders of it.
-                Have Fun!! </p>
-            <div class="box3">Read More</div>
-        </div>
-    </div>
-</body>
-</html>
+// const Stack = createStackNavigator();
+// // Navigation component (default export)
+// const Navigate = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator
+//         initialRouteName="Login"
+//         screenOptions={{
+//           headerStyle: {
+//             backgroundColor: 'red',
+//           },
+//           headerTintColor: 'green',
+//           headerTitleStyle: {
+//             fontSize: 25,
+//           },
+//         }}>
+//         <Stack.Screen
+//           name="Home"
+//           component={Home}
+//           options={{
+//             title: 'Home-page',
+//             headerStyle: {
+//               backgroundColor: 'green',
+//             },
+//             headerTintColor: 'white',
+//             headerTitleStyle: {
+//               fontSize: 25,
+//             },
+//           }}
+//         />
+//         <Stack.Screen
+//           name="Login"
+//           component={Login}
+//           options={{
+//             headerTitle: () => <Button title="Left" />,
+//             headerRight: () => <Header />,
+//           }}
+//         />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+// const Header = () => {
+//   return <TextInput placeholder="Name" />;
+// };
+// // Home screen component
+// const Home = props => {
+//   console.warn(props.route.params);
+//   const {name, age} = props.route.params;
+//   return (
+//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Text style={{fontSize: 30, color: 'red'}}>Home Screen</Text>
+//       <Text style={{fontSize: 10, color: 'red'}}>Name:{name}</Text>
+//       <Text style={{fontSize: 10, color: 'red'}}>Age:{age}</Text>
+//     </View>
+//   );
+// };
+
+// // Login screen component
+// const Login = (props: {navigation: any}) => {
+//   const [name, setName] = useState('');
+//   const age = 18;
+//   return (
+//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Text style={{fontSize: 30, color: 'blue'}}>Login By Your E-mail</Text>
+//       <TextInput
+//         placeholder="Enter Your Name"
+//         style={{
+//           fontSize: 20,
+//           borderColor: 'red',
+//           borderWidth: 2,
+//           color: 'black',
+//         }}
+//         onChangeText={text => {
+//           setName(text);
+//         }}
+//       />
+//       <Button
+//         title="Go To Home Page"
+//         onPress={() => {
+//           props.navigation.navigate('Home', {name, age});
+//         }}
+//       />
+//     </View>
+//   );
+// };
+// const API = () => {
+//   const [data, setData] = useState<any[]>([]);
+//   const GetAPIData = async () => {
+//     const url = 'https://jsonplaceholder.typicode.com/posts'; // Specify a valid endpoint
+//     let result = await fetch(url);
+//     result = await result.json();
+//     setData(result);
+//   };
+//   useEffect(() => {
+//     GetAPIData();
+//   }, []);
+//   return (
+//     <ScrollView>
+//       <View>
+//         <Text style={{color: 'white', fontSize: 30, textAlign: 'center'}}>
+//           List With API CALL
+//         </Text>
+//         {data
+//           ? data.map((item: any) => (
+//               <View key={item.id}>
+//                 <Text style={{color: 'white', fontSize: 20}}>
+//                   ID::{item.id}
+//                 </Text>
+//                 <Text style={{color: 'white', fontSize: 20}}>
+//                   ID::{item.title}
+//                 </Text>
+//               </View>
+//             ))
+//           : null}
+//       </View>
+//     </ScrollView>
+//   );
+// };
+// const GetAPIData_FlatList = () => {
+//   const [data, setData] = useState<any[]>([]);
+//   const GetAPIData = async () => {
+//     const url = 'https://jsonplaceholder.typicode.com/posts'; // Specify a valid endpoint
+//     let result = await fetch(url);
+//     result = await result.json();
+//     setData(result);
+//   };
+//   useEffect(() => {
+//     GetAPIData();
+//   }, []);
+//   return (
+//     <View>
+//       <Text style={{color: 'white', fontSize: 30, textAlign: 'center'}}>
+//         FlatList With API CALL
+//       </Text>
+//       {data.length ? (
+//         <FlatList
+//           data={data}
+//           renderItem={({item}) => (
+//             <View>
+//               <Text style={{color: 'white', fontSize: 15}}>{item.id}</Text>
+//             </View>
+//           )}
+//         />
+//       ) : null}
+//     </View>
+//   );
+// };
+// const PostMan = ()=>{
+//   const [data, setData] = useState<any[]>([]);
+//   const getPostManAPI = async ()=>{
+//     let url = 'http://192.168.200.96:3000/users';
+//     let result = await fetch(url);
+//     result = await result.json();
+//     setData(result);
+// };
+//   useEffect(()=>{
+//   getPostManAPI();
+// },[]);
+
+// return(
+//   <View>
+//     <Text style={{fontSize:30}}>Postman API</Text>
+//     {
+//       data.length ?
+//       data.map((item)=><View key={item.id}>
+//         <Text style={{color:'red'}}>{item.id}</Text>
+//         <Text>{item.name}</Text>
+//         <Text>{item.age}</Text>
+//         <Text>{item.email}</Text>
+//         </View>)
+//         : null
+//     }
+//     </View>);
+// };
+// const POST_Method = () => {
+//   const data = {
+//     id:2,
+//     name: 'Sam',
+//     age: '16',
+//   };
+
+//   const saveAPIData = async () => {
+//     const url = 'http://192.168.200.96:3000/users';
+//     let result = await fetch(url, {
+//       method: 'POST',
+//       headers: {'Content-Type': 'application/json'},
+//       body: JSON.stringify(data),
+//     });
+//     result = await result.json();
+//     console.warn(result);
+//   };
+//   return(
+//     <View>
+//       <Button title="Save Data" onPress={saveAPIData}/>
+//     </View>
+//   );
+// };
+// const DynamicData = ()=>{
+//   const[id,setID] = useState('');
+//   const[name,setName] = useState('');
+//   const[email,setEmail] = useState('');
+//   const[password,setPassword] = useState('');
+//   const[age,setAge] = useState('');
+//   const[idError,setIdError] = useState('');
+//   const[nameError,setNameError] = useState('');
+//   const[passwordError,setPasswordError] = useState('');
+//   const[ageError,setAgeError] = useState('');
+//   const[emailError,setEmailError] = useState('');
+//   const data = {
+//     id:id,
+//     name:name,
+//     email:email,
+//     password:password,
+//     age:age,
+//   };
+//   const Insert_Data = async ()=>{
+//     const valiData = ()=>{
+//     if(!id){
+//       setIdError(true);
+//     }
+//     else{
+//       setIdError(false);
+//     }
+//     if(!id){
+//       return false;
+//     }
+//     if(!name){
+//       setNameError(true);
+//     }
+//     else{
+//       setNameError(false);
+//     }
+//     if(!name){
+//       return false;
+//     }
+//     if(!email){
+//       setEmailError(true);
+//     }
+//     else{
+//       setEmailError(false);
+//     }
+//     if(!email){
+//       return false;
+//     }
+//     if(!password){
+//       setPasswordError(true);
+//     }
+//     else{
+//       setPasswordError(false);
+//     }
+//     if(!password){
+//       return false;
+//     }
+//     if(!age){
+//       setAgeError(true);
+//     }
+//     else{
+//       setAgeError(false);
+//     }
+//     if(!age){
+//       return false;
+//     }
+//     if(!id || !password || !name || !age || email){
+//       return false;
+//     }
+//   };
+//   if(valiData()){
+//     console.warn('Data is Saved');
+//   }
+//     const url = 'http://192.168.200.96:3000/users';
+//     let result = await fetch(url,{
+//       method: 'POST',
+//       headers:{'content-type': 'application/json'},
+//       body: JSON.stringify(data),
+//     });
+//     result = await result.json();
+//   };
+//   return(
+//     <View style={{backgroundColor:'white',flex:1}}>
+//       <TextInput style={styles1.input} placeholder="Enter Your Id" placeholderTextColor={'black'} onChangeText={(text)=>{setID(text);}}/>
+//       {idError ? <Text style={{color:'red',fontSize:14,margin:5}}>Id is required!</Text> : null}
+//       <TextInput style={styles1.input} placeholder="Enter Your Name" placeholderTextColor={'black'} onChangeText={(text)=>{setName(text);}}/>
+//       {nameError ? <Text style={{color:'red',fontSize:14,margin:5}}>Name is required!</Text> : null}
+//       <TextInput style={styles1.input} placeholder="Enter Your E-Mail" placeholderTextColor={'black'} onChangeText={(text)=>{setEmail(text);}}/>
+//       {emailError ? <Text style={{color:'red',fontSize:14,margin:5}}>Email is required!</Text> : null}
+//       <TextInput style={styles1.input} placeholder="Enter Your Password" placeholderTextColor={'black'} onChangeText={(text)=>{setPassword(text);}}/>
+//       {passwordError ? <Text style={{color:'red',fontSize:14,margin:5}}>Password is required!</Text> : null}
+//       <TextInput style={styles1.input} placeholder="Enter Your Age" placeholderTextColor={'black'} onChangeText={(text)=>{setAge(text);}}/>
+//       {ageError ? <Text style={{color:'red',fontSize:14,margin:5}}>Age is required!</Text> : null}
+//       <Button title="Save Your Data" onPress={Insert_Data}/>
+//     </View>
+//   );
+// };
+// const styles1 = StyleSheet.create({
+//   input:{
+//     borderWidth:3,
+//     margin:4,
+//     color:'black',
+//     borderRadius:10,
+//   },
+// });
+// const MyAPIData = () => {
+//   const [data, setData] = useState<any[]>([]);
+//   const getData = async () => {
+//     const url = 'http://192.168.200.96:3000/users';
+//     let result = await fetch(url);
+//     result = await result.json();
+//     if (result) {
+//       setData(result);
+//     }
+//   };
+
+//   useEffect(() => {
+//     getData();
+//   }, []);
+
+//   return (
+//     <View>
+//       {
+//         data.map((item)=><View key={item.id}>
+//           <Text style={{color:'red'}}>{item.id}</Text> 
+//           <Text>{item.name}</Text>
+//           <Text>{item.email}</Text>
+//           <Text>{item.age}</Text>
+//         </View>)
+//       }
+//     </View>
+//   );
+// };
+// const styles3 = StyleSheet.create({
+//   container:{
+//     flex:1,
+//   },
+//   datawrapper:{
+//     flex:1,
+//     flexDirection:'row',
+//     margin:5,
+//     justifyContent:'space-around',
+//     backgroundColor:'orange',
+//   },
+// });
+// export default MyAPIData;
+// export default DynamicData;
+// export default Navigate; // default export for Navigate
+// export default Tab_Navigation;
+// export default API;
+// export default GetAPIData_FlatList;
+// export default PostMan;
+// export default POST_Method;
